@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://api.calendar.cxrm.com/" xmlns:ns1="http://schemas.xmlsoap.org/wsdl/soap/http" name="ApptAPIService" targetNamespace="http://api.calendar.cxrm.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://api.calendar.cxrm.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="changeRecurringAppointment" type="tns:changeRecurringAppointment" />
+      <xs:element name="changeRecurringAppointmentResponse" type="tns:changeRecurringAppointmentResponse" />
+      <xs:element name="getAllAppointments" type="tns:getAllAppointments" />
+      <xs:element name="getAllAppointmentsResponse" type="tns:getAllAppointmentsResponse" />
+      <xs:element name="getAllAppointmentsSync" type="tns:getAllAppointmentsSync" />
+      <xs:element name="getAllAppointmentsSyncResponse" type="tns:getAllAppointmentsSyncResponse" />
+      <xs:element name="getAllOpenAppointments" type="tns:getAllOpenAppointments" />
+      <xs:element name="getAllOpenAppointmentsResponse" type="tns:getAllOpenAppointmentsResponse" />
+      <xs:element name="getAppointmentDetail" type="tns:getAppointmentDetail" />
+      <xs:element name="getAppointmentDetailResponse" type="tns:getAppointmentDetailResponse" />
+      <xs:element name="getAppointmentPicklist" type="tns:getAppointmentPicklist" />
+      <xs:element name="getAppointmentPicklistResponse" type="tns:getAppointmentPicklistResponse" />
+      <xs:element name="getAppointmentsByDayRange" type="tns:getAppointmentsByDayRange" />
+      <xs:element name="getAppointmentsByDayRangeResponse" type="tns:getAppointmentsByDayRangeResponse" />
+      <xs:element name="getAppointmentsByUserName" type="tns:getAppointmentsByUserName" />
+      <xs:element name="getAppointmentsByUserNameAndDayRange" type="tns:getAppointmentsByUserNameAndDayRange" />
+      <xs:element name="getAppointmentsByUserNameAndDayRangeResponse" type="tns:getAppointmentsByUserNameAndDayRangeResponse" />
+      <xs:element name="getAppointmentsByUserNameResponse" type="tns:getAppointmentsByUserNameResponse" />
+      <xs:element name="getApptOptions" type="tns:getApptOptions" />
+      <xs:element name="getApptOptionsResponse" type="tns:getApptOptionsResponse" />
+      <xs:element name="getNextSequenceId" type="tns:getNextSequenceId" />
+      <xs:element name="getNextSequenceIdResponse" type="tns:getNextSequenceIdResponse" />
+      <xs:element name="getOpenAppointmentsByDayRange" type="tns:getOpenAppointmentsByDayRange" />
+      <xs:element name="getOpenAppointmentsByDayRangeResponse" type="tns:getOpenAppointmentsByDayRangeResponse" />
+      <xs:element name="getOpenAppointmentsByUserName" type="tns:getOpenAppointmentsByUserName" />
+      <xs:element name="getOpenAppointmentsByUserNameAndDayRange" type="tns:getOpenAppointmentsByUserNameAndDayRange" />
+      <xs:element name="getOpenAppointmentsByUserNameAndDayRangeResponse" type="tns:getOpenAppointmentsByUserNameAndDayRangeResponse" />
+      <xs:element name="getOpenAppointmentsByUserNameResponse" type="tns:getOpenAppointmentsByUserNameResponse" />
+      <xs:element name="saveAppointmentRecord" type="tns:saveAppointmentRecord" />
+      <xs:element name="saveAppointmentRecordResponse" type="tns:saveAppointmentRecordResponse" />
+      <xs:element name="saveAppointmentRecordSync" type="tns:saveAppointmentRecordSync" />
+      <xs:element name="saveAppointmentRecordSyncResponse" type="tns:saveAppointmentRecordSyncResponse" />
+      <xs:element name="transferEmailAsAppointment" type="tns:transferEmailAsAppointment" />
+      <xs:element name="transferEmailAsAppointmentResponse" type="tns:transferEmailAsAppointmentResponse" />
+      <xs:complexType name="changeRecurringAppointment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="tns:apptRecurVariance" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="apptRecurVariance">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="activeStatus" type="xs:string" />
+          <xs:element minOccurs="0" name="errorMsg" type="xs:string" />
+          <xs:element name="masterApptID" type="xs:int" />
+          <xs:element name="masterUpdated" type="xs:boolean" />
+          <xs:element minOccurs="0" name="newDate" type="xs:string" />
+          <xs:element minOccurs="0" name="newDuration" type="xs:string" />
+          <xs:element minOccurs="0" name="newStartTime" type="xs:string" />
+          <xs:element minOccurs="0" name="originalDate" type="xs:string" />
+          <xs:element name="ppwMasterApptID" type="xs:int" />
+          <xs:element name="recurUpdated" type="xs:boolean" />
+          <xs:element name="success" type="xs:boolean" />
+          <xs:element name="varianceApptID" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="changeRecurringAppointmentResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:apptRecurVariance" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAppointmentDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element name="arg1" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAppointmentDetailResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:appointment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="appointment">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="apptAgenda" type="xs:string" />
+              <xs:element minOccurs="0" name="apptDate" type="xs:string" />
+              <xs:element minOccurs="0" name="apptDesc" type="xs:string" />
+              <xs:element name="apptId" type="xs:int" />
+              <xs:element minOccurs="0" name="apptName" type="xs:string" />
+              <xs:element minOccurs="0" name="apptOutcome" type="xs:string" />
+              <xs:element minOccurs="0" name="apptPrivate" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="attendees" nillable="true" type="tns:calAttendee" />
+              <xs:element minOccurs="0" name="closedFlag" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="customFields" nillable="true" type="tns:baseCustomFieldData" />
+              <xs:element minOccurs="0" name="duration" type="xs:string" />
+              <xs:element minOccurs="0" name="evtAllday" type="xs:string" />
+              <xs:element minOccurs="0" name="evtAlldayEnd" type="xs:string" />
+              <xs:element minOccurs="0" name="evtAlldayStart" type="xs:string" />
+              <xs:element minOccurs="0" name="evtCategory" type="xs:string" />
+              <xs:element minOccurs="0" name="evtImportance" type="xs:string" />
+              <xs:element minOccurs="0" name="evtStatus" type="xs:string" />
+              <xs:element minOccurs="0" name="evtType" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="notes" nillable="true" type="tns:baseMessage" />
+              <xs:element minOccurs="0" name="recurInfoStore" type="tns:apptRecurInfoStore" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="references" nillable="true" type="tns:calReference" />
+              <xs:element minOccurs="0" name="reminderDate" type="xs:string" />
+              <xs:element name="reminderHour" type="xs:int" />
+              <xs:element name="reminderMinute" type="xs:int" />
+              <xs:element minOccurs="0" name="startTime" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="activeStatus" type="xs:string" />
+          <xs:element name="dbCreatedBy" type="xs:int" />
+          <xs:element minOccurs="0" name="dbCreationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dbLastUpdateDate" type="xs:dateTime" />
+          <xs:element name="dbLastUpdatedBy" type="xs:int" />
+          <xs:element minOccurs="0" name="errorMsg" type="xs:string" />
+          <xs:element name="olCreatedBy" type="xs:int" />
+          <xs:element minOccurs="0" name="olCreationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="olLastUpdateDate" type="xs:dateTime" />
+          <xs:element name="olLastUpdatedBy" type="xs:int" />
+          <xs:element name="xmlId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="calAttendee">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="userAcceptance" type="xs:string" />
+              <xs:element minOccurs="0" name="userDisplayName" type="xs:string" />
+              <xs:element name="userId" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseCustomFieldData">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element name="cfDataId" type="xs:int" />
+              <xs:element name="cfDataNumValue" type="xs:double" />
+              <xs:element minOccurs="0" name="cfDataValue" type="xs:string" />
+              <xs:element minOccurs="0" name="fieldDefinition" type="xs:string" />
+              <xs:element name="fieldDefinitionId" type="xs:int" />
+              <xs:element name="ownerTableId" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseMessage">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="attachmentFileContent" type="xs:string" />
+              <xs:element minOccurs="0" name="attachmentFileName" type="xs:string" />
+              <xs:element name="msgId" type="xs:int" />
+              <xs:element minOccurs="0" name="msgTitle" type="xs:string" />
+              <xs:element minOccurs="0" name="msgTxt" type="xs:string" />
+              <xs:element name="parentId" type="xs:int" />
+              <xs:element name="threadId" type="xs:int" />
+              <xs:element minOccurs="0" name="writerName" type="xs:string" />
+              <xs:element name="writerUserId" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="apptRecurInfoStore">
+        <xs:sequence>
+          <xs:element name="daySetup" type="xs:int" />
+          <xs:element minOccurs="0" name="endDate" type="xs:string" />
+          <xs:element minOccurs="0" name="monthSetup" type="xs:string" />
+          <xs:element name="numTimes" type="xs:int" />
+          <xs:element minOccurs="0" name="recurType" type="xs:string" />
+          <xs:element minOccurs="0" name="startDate" type="xs:string" />
+          <xs:element minOccurs="0" name="weekSetup" type="xs:string" />
+          <xs:element minOccurs="0" name="yearSetup" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="calReference">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element name="entityId" type="xs:int" />
+              <xs:element minOccurs="0" name="entityName" type="xs:string" />
+              <xs:element minOccurs="0" name="entityType" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getAppointmentsByDayRange">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAppointmentsByDayRangeResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:appointmentList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="appointmentList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="tns:appointment" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="saveAppointmentRecordSync">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="tns:appointment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="saveAppointmentRecordSyncResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:appointment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAllAppointments">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAllAppointmentsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:appointmentList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="transferEmailAsAppointment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+          <xs:element minOccurs="0" name="arg3" type="tns:appointment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="transferEmailAsAppointmentResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:appointment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getOpenAppointmentsByUserNameAndDayRange">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+          <xs:element minOccurs="0" name="arg3" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getOpenAppointmentsByUserNameAndDayRangeResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:appointmentList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getOpenAppointmentsByDayRange">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getOpenAppointmentsByDayRangeResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:appointmentList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="saveAppointmentRecord">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="tns:appointment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="saveAppointmentRecordResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:appointment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getOpenAppointmentsByUserName">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getOpenAppointmentsByUserNameResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:appointmentList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAppointmentPicklist">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAppointmentPicklistResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:appointmentList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getNextSequenceId">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getNextSequenceIdResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getApptOptions">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getApptOptionsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:apptOptions" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="apptOptions">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseObj">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="apptCategoryList" type="tns:apptCategoryList" />
+              <xs:element minOccurs="0" name="apptImportanceList" type="tns:apptImportanceList" />
+              <xs:element minOccurs="0" name="apptStatusList" type="tns:apptStatusList" />
+              <xs:element minOccurs="0" name="apptTypeList" type="tns:apptTypeList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseObj">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="errorMsg" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="apptCategoryList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="tns:apptCategory" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="apptCategory">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:option">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="option">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseObj">
+            <xs:sequence>
+              <xs:element name="id" type="xs:int" />
+              <xs:element minOccurs="0" name="key" type="xs:string" />
+              <xs:element minOccurs="0" name="name" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="apptImportanceList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="tns:apptImportance" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="apptImportance">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:option">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="apptStatusList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="tns:apptStatus" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="apptStatus">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:option">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="apptTypeList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="tns:apptType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="apptType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:option">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getAllOpenAppointments">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAllOpenAppointmentsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:appointmentList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAppointmentsByUserName">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAppointmentsByUserNameResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:appointmentList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAllAppointmentsSync">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAllAppointmentsSyncResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:appointmentList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAppointmentsByUserNameAndDayRange">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+          <xs:element minOccurs="0" name="arg3" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAppointmentsByUserNameAndDayRangeResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:appointmentList" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getAllAppointmentsResponse">
+    <wsdl:part name="parameters" element="tns:getAllAppointmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="saveAppointmentRecordSync">
+    <wsdl:part name="parameters" element="tns:saveAppointmentRecordSync" />
+  </wsdl:message>
+  <wsdl:message name="transferEmailAsAppointment">
+    <wsdl:part name="parameters" element="tns:transferEmailAsAppointment" />
+  </wsdl:message>
+  <wsdl:message name="getAppointmentPicklist">
+    <wsdl:part name="parameters" element="tns:getAppointmentPicklist" />
+  </wsdl:message>
+  <wsdl:message name="getAllAppointmentsSyncResponse">
+    <wsdl:part name="parameters" element="tns:getAllAppointmentsSyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="saveAppointmentRecordSyncResponse">
+    <wsdl:part name="parameters" element="tns:saveAppointmentRecordSyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="changeRecurringAppointmentResponse">
+    <wsdl:part name="parameters" element="tns:changeRecurringAppointmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAppointmentPicklistResponse">
+    <wsdl:part name="parameters" element="tns:getAppointmentPicklistResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllOpenAppointments">
+    <wsdl:part name="parameters" element="tns:getAllOpenAppointments" />
+  </wsdl:message>
+  <wsdl:message name="getAppointmentsByUserNameResponse">
+    <wsdl:part name="parameters" element="tns:getAppointmentsByUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOpenAppointmentsByUserNameAndDayRangeResponse">
+    <wsdl:part name="parameters" element="tns:getOpenAppointmentsByUserNameAndDayRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getApptOptions">
+    <wsdl:part name="parameters" element="tns:getApptOptions" />
+  </wsdl:message>
+  <wsdl:message name="getAppointmentDetail">
+    <wsdl:part name="parameters" element="tns:getAppointmentDetail" />
+  </wsdl:message>
+  <wsdl:message name="getAllAppointments">
+    <wsdl:part name="parameters" element="tns:getAllAppointments" />
+  </wsdl:message>
+  <wsdl:message name="getAppointmentsByDayRangeResponse">
+    <wsdl:part name="parameters" element="tns:getAppointmentsByDayRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="changeRecurringAppointment">
+    <wsdl:part name="parameters" element="tns:changeRecurringAppointment" />
+  </wsdl:message>
+  <wsdl:message name="getNextSequenceId">
+    <wsdl:part name="parameters" element="tns:getNextSequenceId" />
+  </wsdl:message>
+  <wsdl:message name="getAppointmentsByUserName">
+    <wsdl:part name="parameters" element="tns:getAppointmentsByUserName" />
+  </wsdl:message>
+  <wsdl:message name="getApptOptionsResponse">
+    <wsdl:part name="parameters" element="tns:getApptOptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAppointmentDetailResponse">
+    <wsdl:part name="parameters" element="tns:getAppointmentDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOpenAppointmentsByUserName">
+    <wsdl:part name="parameters" element="tns:getOpenAppointmentsByUserName" />
+  </wsdl:message>
+  <wsdl:message name="saveAppointmentRecordResponse">
+    <wsdl:part name="parameters" element="tns:saveAppointmentRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllAppointmentsSync">
+    <wsdl:part name="parameters" element="tns:getAllAppointmentsSync" />
+  </wsdl:message>
+  <wsdl:message name="transferEmailAsAppointmentResponse">
+    <wsdl:part name="parameters" element="tns:transferEmailAsAppointmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNextSequenceIdResponse">
+    <wsdl:part name="parameters" element="tns:getNextSequenceIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOpenAppointmentsByDayRangeResponse">
+    <wsdl:part name="parameters" element="tns:getOpenAppointmentsByDayRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllOpenAppointmentsResponse">
+    <wsdl:part name="parameters" element="tns:getAllOpenAppointmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOpenAppointmentsByUserNameAndDayRange">
+    <wsdl:part name="parameters" element="tns:getOpenAppointmentsByUserNameAndDayRange" />
+  </wsdl:message>
+  <wsdl:message name="getAppointmentsByUserNameAndDayRangeResponse">
+    <wsdl:part name="parameters" element="tns:getAppointmentsByUserNameAndDayRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAppointmentsByDayRange">
+    <wsdl:part name="parameters" element="tns:getAppointmentsByDayRange" />
+  </wsdl:message>
+  <wsdl:message name="saveAppointmentRecord">
+    <wsdl:part name="parameters" element="tns:saveAppointmentRecord" />
+  </wsdl:message>
+  <wsdl:message name="getOpenAppointmentsByDayRange">
+    <wsdl:part name="parameters" element="tns:getOpenAppointmentsByDayRange" />
+  </wsdl:message>
+  <wsdl:message name="getOpenAppointmentsByUserNameResponse">
+    <wsdl:part name="parameters" element="tns:getOpenAppointmentsByUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAppointmentsByUserNameAndDayRange">
+    <wsdl:part name="parameters" element="tns:getAppointmentsByUserNameAndDayRange" />
+  </wsdl:message>
+  <wsdl:portType name="ApptAPI">
+    <wsdl:operation name="changeRecurringAppointment">
+      <wsdl:input name="changeRecurringAppointment" message="tns:changeRecurringAppointment" />
+      <wsdl:output name="changeRecurringAppointmentResponse" message="tns:changeRecurringAppointmentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAppointmentDetail">
+      <wsdl:input name="getAppointmentDetail" message="tns:getAppointmentDetail" />
+      <wsdl:output name="getAppointmentDetailResponse" message="tns:getAppointmentDetailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAppointmentsByDayRange">
+      <wsdl:input name="getAppointmentsByDayRange" message="tns:getAppointmentsByDayRange" />
+      <wsdl:output name="getAppointmentsByDayRangeResponse" message="tns:getAppointmentsByDayRangeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="saveAppointmentRecordSync">
+      <wsdl:input name="saveAppointmentRecordSync" message="tns:saveAppointmentRecordSync" />
+      <wsdl:output name="saveAppointmentRecordSyncResponse" message="tns:saveAppointmentRecordSyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllAppointments">
+      <wsdl:input name="getAllAppointments" message="tns:getAllAppointments" />
+      <wsdl:output name="getAllAppointmentsResponse" message="tns:getAllAppointmentsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="transferEmailAsAppointment">
+      <wsdl:input name="transferEmailAsAppointment" message="tns:transferEmailAsAppointment" />
+      <wsdl:output name="transferEmailAsAppointmentResponse" message="tns:transferEmailAsAppointmentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getOpenAppointmentsByUserNameAndDayRange">
+      <wsdl:input name="getOpenAppointmentsByUserNameAndDayRange" message="tns:getOpenAppointmentsByUserNameAndDayRange" />
+      <wsdl:output name="getOpenAppointmentsByUserNameAndDayRangeResponse" message="tns:getOpenAppointmentsByUserNameAndDayRangeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getOpenAppointmentsByDayRange">
+      <wsdl:input name="getOpenAppointmentsByDayRange" message="tns:getOpenAppointmentsByDayRange" />
+      <wsdl:output name="getOpenAppointmentsByDayRangeResponse" message="tns:getOpenAppointmentsByDayRangeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="saveAppointmentRecord">
+      <wsdl:input name="saveAppointmentRecord" message="tns:saveAppointmentRecord" />
+      <wsdl:output name="saveAppointmentRecordResponse" message="tns:saveAppointmentRecordResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getOpenAppointmentsByUserName">
+      <wsdl:input name="getOpenAppointmentsByUserName" message="tns:getOpenAppointmentsByUserName" />
+      <wsdl:output name="getOpenAppointmentsByUserNameResponse" message="tns:getOpenAppointmentsByUserNameResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAppointmentPicklist">
+      <wsdl:input name="getAppointmentPicklist" message="tns:getAppointmentPicklist" />
+      <wsdl:output name="getAppointmentPicklistResponse" message="tns:getAppointmentPicklistResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getNextSequenceId">
+      <wsdl:input name="getNextSequenceId" message="tns:getNextSequenceId" />
+      <wsdl:output name="getNextSequenceIdResponse" message="tns:getNextSequenceIdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getApptOptions">
+      <wsdl:input name="getApptOptions" message="tns:getApptOptions" />
+      <wsdl:output name="getApptOptionsResponse" message="tns:getApptOptionsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllOpenAppointments">
+      <wsdl:input name="getAllOpenAppointments" message="tns:getAllOpenAppointments" />
+      <wsdl:output name="getAllOpenAppointmentsResponse" message="tns:getAllOpenAppointmentsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAppointmentsByUserName">
+      <wsdl:input name="getAppointmentsByUserName" message="tns:getAppointmentsByUserName" />
+      <wsdl:output name="getAppointmentsByUserNameResponse" message="tns:getAppointmentsByUserNameResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllAppointmentsSync">
+      <wsdl:input name="getAllAppointmentsSync" message="tns:getAllAppointmentsSync" />
+      <wsdl:output name="getAllAppointmentsSyncResponse" message="tns:getAllAppointmentsSyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAppointmentsByUserNameAndDayRange">
+      <wsdl:input name="getAppointmentsByUserNameAndDayRange" message="tns:getAppointmentsByUserNameAndDayRange" />
+      <wsdl:output name="getAppointmentsByUserNameAndDayRangeResponse" message="tns:getAppointmentsByUserNameAndDayRangeResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ApptAPIServiceSoapBinding" type="tns:ApptAPI">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="changeRecurringAppointment">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="changeRecurringAppointment">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="changeRecurringAppointmentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppointmentDetail">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAppointmentDetail">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAppointmentDetailResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppointmentsByDayRange">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAppointmentsByDayRange">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAppointmentsByDayRangeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAppointments">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAllAppointments">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllAppointmentsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveAppointmentRecordSync">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="saveAppointmentRecordSync">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="saveAppointmentRecordSyncResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transferEmailAsAppointment">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="transferEmailAsAppointment">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transferEmailAsAppointmentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOpenAppointmentsByDayRange">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getOpenAppointmentsByDayRange">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getOpenAppointmentsByDayRangeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOpenAppointmentsByUserNameAndDayRange">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getOpenAppointmentsByUserNameAndDayRange">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getOpenAppointmentsByUserNameAndDayRangeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOpenAppointmentsByUserName">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getOpenAppointmentsByUserName">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getOpenAppointmentsByUserNameResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveAppointmentRecord">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="saveAppointmentRecord">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="saveAppointmentRecordResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppointmentPicklist">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAppointmentPicklist">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAppointmentPicklistResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNextSequenceId">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getNextSequenceId">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getNextSequenceIdResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApptOptions">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getApptOptions">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getApptOptionsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllOpenAppointments">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAllOpenAppointments">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllOpenAppointmentsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppointmentsByUserName">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAppointmentsByUserName">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAppointmentsByUserNameResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAppointmentsSync">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAllAppointmentsSync">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllAppointmentsSyncResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppointmentsByUserNameAndDayRange">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAppointmentsByUserNameAndDayRange">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAppointmentsByUserNameAndDayRangeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ApptAPIService">
+    <wsdl:port name="ApptAPIPort" binding="tns:ApptAPIServiceSoapBinding">
+      <soap:address location="http://localhost:8080/cxf/ApptAPI" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

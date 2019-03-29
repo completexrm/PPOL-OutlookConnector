@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://api.sales.cxrm.com/" xmlns:ns1="http://schemas.xmlsoap.org/wsdl/soap/http" name="OppNoteAPIService" targetNamespace="http://api.sales.cxrm.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://api.sales.cxrm.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="attachNoteToOpportunity" type="tns:attachNoteToOpportunity" />
+      <xs:element name="attachNoteToOpportunityResponse" type="tns:attachNoteToOpportunityResponse" />
+      <xs:element name="searchOpportunities" type="tns:searchOpportunities" />
+      <xs:element name="searchOpportunitiesResponse" type="tns:searchOpportunitiesResponse" />
+      <xs:element name="transferEmailToOpp" type="tns:transferEmailToOpp" />
+      <xs:element name="transferEmailToOppResponse" type="tns:transferEmailToOppResponse" />
+      <xs:complexType name="attachNoteToOpportunity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+          <xs:element name="arg3" type="xs:int" />
+          <xs:element minOccurs="0" name="arg4" type="xs:string" />
+          <xs:element minOccurs="0" name="arg5" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="attachNoteToOpportunityResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="transferEmailToOpp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+          <xs:element name="arg3" type="xs:int" />
+          <xs:element minOccurs="0" name="arg4" type="xs:string" />
+          <xs:element minOccurs="0" name="arg5" type="xs:string" />
+          <xs:element minOccurs="0" name="arg6" type="xs:string" />
+          <xs:element name="arg7" type="xs:int" />
+          <xs:element minOccurs="0" name="arg8" type="xs:string" />
+          <xs:element minOccurs="0" name="arg9" type="xs:string" />
+          <xs:element name="arg10" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="transferEmailToOppResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="searchOpportunities">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+          <xs:element minOccurs="0" name="arg3" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="searchOpportunitiesResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:opportunityList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="opportunityList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="tns:opportunity" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="activeStatus" type="xs:string" />
+          <xs:element name="dbCreatedBy" type="xs:int" />
+          <xs:element minOccurs="0" name="dbCreationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dbLastUpdateDate" type="xs:dateTime" />
+          <xs:element name="dbLastUpdatedBy" type="xs:int" />
+          <xs:element minOccurs="0" name="errorMsg" type="xs:string" />
+          <xs:element name="olCreatedBy" type="xs:int" />
+          <xs:element minOccurs="0" name="olCreationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="olLastUpdateDate" type="xs:dateTime" />
+          <xs:element name="olLastUpdatedBy" type="xs:int" />
+          <xs:element name="xmlId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="opportunity">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="customFields" nillable="true" type="tns:baseCustomFieldData" />
+              <xs:element name="customerId" type="xs:int" />
+              <xs:element minOccurs="0" name="keyCompetitor" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="notes" nillable="true" type="tns:baseMessage" />
+              <xs:element name="oppAmount" type="xs:double" />
+              <xs:element minOccurs="0" name="oppChannelCode" type="xs:string" />
+              <xs:element minOccurs="0" name="oppChannelDetail" type="xs:string" />
+              <xs:element minOccurs="0" name="oppCloseDate" type="xs:string" />
+              <xs:element minOccurs="0" name="oppCurrency" type="xs:string" />
+              <xs:element minOccurs="0" name="oppDesc" type="xs:string" />
+              <xs:element name="oppId" type="xs:int" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="oppLines" nillable="true" type="tns:oppLine" />
+              <xs:element minOccurs="0" name="oppName" type="xs:string" />
+              <xs:element name="oppNumber" type="xs:int" />
+              <xs:element minOccurs="0" name="oppStage" type="xs:string" />
+              <xs:element minOccurs="0" name="oppStatus" type="xs:string" />
+              <xs:element name="oppWinprob" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseCustomFieldData">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element name="cfDataId" type="xs:int" />
+              <xs:element name="cfDataNumValue" type="xs:double" />
+              <xs:element minOccurs="0" name="cfDataValue" type="xs:string" />
+              <xs:element minOccurs="0" name="fieldDefinition" type="xs:string" />
+              <xs:element name="fieldDefinitionId" type="xs:int" />
+              <xs:element name="ownerTableId" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseMessage">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="attachmentFileContent" type="xs:string" />
+              <xs:element minOccurs="0" name="attachmentFileName" type="xs:string" />
+              <xs:element name="msgId" type="xs:int" />
+              <xs:element minOccurs="0" name="msgTitle" type="xs:string" />
+              <xs:element minOccurs="0" name="msgTxt" type="xs:string" />
+              <xs:element name="parentId" type="xs:int" />
+              <xs:element name="threadId" type="xs:int" />
+              <xs:element minOccurs="0" name="writerName" type="xs:string" />
+              <xs:element name="writerUserId" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="oppLine">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element name="amount" type="xs:double" />
+              <xs:element name="amountNR" type="xs:double" />
+              <xs:element name="oppId" type="xs:int" />
+              <xs:element name="oppLineId" type="xs:int" />
+              <xs:element name="productCatId" type="xs:int" />
+              <xs:element name="productId" type="xs:int" />
+              <xs:element name="qty" type="xs:double" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="transferEmailToOpp">
+    <wsdl:part name="parameters" element="tns:transferEmailToOpp" />
+  </wsdl:message>
+  <wsdl:message name="transferEmailToOppResponse">
+    <wsdl:part name="parameters" element="tns:transferEmailToOppResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchOpportunitiesResponse">
+    <wsdl:part name="parameters" element="tns:searchOpportunitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchOpportunities">
+    <wsdl:part name="parameters" element="tns:searchOpportunities" />
+  </wsdl:message>
+  <wsdl:message name="attachNoteToOpportunity">
+    <wsdl:part name="parameters" element="tns:attachNoteToOpportunity" />
+  </wsdl:message>
+  <wsdl:message name="attachNoteToOpportunityResponse">
+    <wsdl:part name="parameters" element="tns:attachNoteToOpportunityResponse" />
+  </wsdl:message>
+  <wsdl:portType name="OppNoteAPI">
+    <wsdl:operation name="attachNoteToOpportunity">
+      <wsdl:input name="attachNoteToOpportunity" message="tns:attachNoteToOpportunity" />
+      <wsdl:output name="attachNoteToOpportunityResponse" message="tns:attachNoteToOpportunityResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="transferEmailToOpp">
+      <wsdl:input name="transferEmailToOpp" message="tns:transferEmailToOpp" />
+      <wsdl:output name="transferEmailToOppResponse" message="tns:transferEmailToOppResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchOpportunities">
+      <wsdl:input name="searchOpportunities" message="tns:searchOpportunities" />
+      <wsdl:output name="searchOpportunitiesResponse" message="tns:searchOpportunitiesResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OppNoteAPIServiceSoapBinding" type="tns:OppNoteAPI">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="attachNoteToOpportunity">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="attachNoteToOpportunity">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="attachNoteToOpportunityResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transferEmailToOpp">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="transferEmailToOpp">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transferEmailToOppResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchOpportunities">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="searchOpportunities">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="searchOpportunitiesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OppNoteAPIService">
+    <wsdl:port name="OppNoteAPIPort" binding="tns:OppNoteAPIServiceSoapBinding">
+      <soap:address location="http://localhost:8080/cxf/OppNoteAPI" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

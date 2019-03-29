@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://api.account.cxrm.com/" xmlns:ns1="http://schemas.xmlsoap.org/wsdl/soap/http" name="UserAPIService" targetNamespace="http://api.account.cxrm.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://api.account.cxrm.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="createUser" type="tns:createUser" />
+      <xs:element name="createUserResponse" type="tns:createUserResponse" />
+      <xs:element name="createUsers" type="tns:createUsers" />
+      <xs:element name="createUsersResponse" type="tns:createUsersResponse" />
+      <xs:element name="getAllActive" type="tns:getAllActive" />
+      <xs:element name="getAllActiveResponse" type="tns:getAllActiveResponse" />
+      <xs:element name="search" type="tns:search" />
+      <xs:element name="searchResponse" type="tns:searchResponse" />
+      <xs:element name="updateUser" type="tns:updateUser" />
+      <xs:element name="updateUserResponse" type="tns:updateUserResponse" />
+      <xs:element name="updateUsers" type="tns:updateUsers" />
+      <xs:element name="updateUsersResponse" type="tns:updateUsersResponse" />
+      <xs:complexType name="createUsers">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="arg1" type="tns:ppolUser" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ppolUser">
+        <xs:sequence>
+          <xs:element name="autoGenDefaultPassword" type="xs:boolean" />
+          <xs:element name="autoGenPassword" type="xs:boolean" />
+          <xs:element minOccurs="0" name="displayName" type="xs:string" />
+          <xs:element minOccurs="0" name="email" type="xs:string" />
+          <xs:element minOccurs="0" name="errorString" type="xs:string" />
+          <xs:element minOccurs="0" name="firstName" type="xs:string" />
+          <xs:element minOccurs="0" name="function" type="xs:string" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="jobTitle" type="xs:string" />
+          <xs:element minOccurs="0" name="lastName" type="xs:string" />
+          <xs:element minOccurs="0" name="module" type="xs:string" />
+          <xs:element minOccurs="0" name="password" type="xs:string" />
+          <xs:element minOccurs="0" name="phone" type="xs:string" />
+          <xs:element minOccurs="0" name="role" type="xs:string" />
+          <xs:element minOccurs="0" name="userName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="arrayList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:abstractList">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="abstractList" abstract="true">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:abstractCollection">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="abstractCollection" abstract="true">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="createUsersResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ppolAuthentication" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ppolAuthentication">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="companyName" type="xs:string" />
+          <xs:element name="encrypted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="errorString" type="xs:string" />
+          <xs:element minOccurs="0" name="password" type="xs:string" />
+          <xs:element minOccurs="0" name="userName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="tns:ppolUser" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createUserResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:ppolAuthentication" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="tns:ppolUser" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateUserResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:ppolAuthentication" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="search">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+          <xs:element minOccurs="0" name="arg3" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="searchResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:fwkUserEO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fwkUserEO">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseBizEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="accessKey" type="xs:string" />
+              <xs:element minOccurs="0" name="defaultLoginAppcode" type="xs:string" />
+              <xs:element minOccurs="0" name="displayName" type="xs:string" />
+              <xs:element minOccurs="0" name="emailAddress" type="xs:string" />
+              <xs:element minOccurs="0" name="enableSync" type="xs:string" />
+              <xs:element minOccurs="0" name="firstName" type="xs:string" />
+              <xs:element minOccurs="0" name="functionResponsibility" type="xs:string" />
+              <xs:element minOccurs="0" name="lastName" type="xs:string" />
+              <xs:element minOccurs="0" name="managerTree" type="xs:string" />
+              <xs:element name="managerUserId" type="xs:int" />
+              <xs:element minOccurs="0" name="middleName" type="xs:string" />
+              <xs:element minOccurs="0" name="phoneNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="pswdExpireDate" type="xs:string" />
+              <xs:element minOccurs="0" name="territoryRole" type="xs:string" />
+              <xs:element name="userId" type="xs:int" />
+              <xs:element minOccurs="0" name="userName" type="xs:string" />
+              <xs:element minOccurs="0" name="userTitle" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseBizEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="activeStatus" type="xs:string" />
+          <xs:element name="createdBy" type="xs:int" />
+          <xs:element minOccurs="0" name="creationDate" type="xs:dateTime" />
+          <xs:element name="deleteCB" type="xs:boolean" />
+          <xs:element minOccurs="0" name="lastUpdateDate" type="xs:dateTime" />
+          <xs:element name="lastUpdatedBy" type="xs:int" />
+          <xs:element minOccurs="0" name="returnMsg" type="xs:string" />
+          <xs:element name="xmlId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="vector">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:abstractList">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="updateUsers">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="arg1" type="tns:ppolUser" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateUsersResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ppolAuthentication" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAllActive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAllActiveResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ppolUser" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="updateUsersResponse">
+    <wsdl:part name="parameters" element="tns:updateUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateUser">
+    <wsdl:part name="parameters" element="tns:updateUser" />
+  </wsdl:message>
+  <wsdl:message name="createUserResponse">
+    <wsdl:part name="parameters" element="tns:createUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllActiveResponse">
+    <wsdl:part name="parameters" element="tns:getAllActiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateUsers">
+    <wsdl:part name="parameters" element="tns:updateUsers" />
+  </wsdl:message>
+  <wsdl:message name="getAllActive">
+    <wsdl:part name="parameters" element="tns:getAllActive" />
+  </wsdl:message>
+  <wsdl:message name="search">
+    <wsdl:part name="parameters" element="tns:search" />
+  </wsdl:message>
+  <wsdl:message name="searchResponse">
+    <wsdl:part name="parameters" element="tns:searchResponse" />
+  </wsdl:message>
+  <wsdl:message name="createUsers">
+    <wsdl:part name="parameters" element="tns:createUsers" />
+  </wsdl:message>
+  <wsdl:message name="createUsersResponse">
+    <wsdl:part name="parameters" element="tns:createUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateUserResponse">
+    <wsdl:part name="parameters" element="tns:updateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="createUser">
+    <wsdl:part name="parameters" element="tns:createUser" />
+  </wsdl:message>
+  <wsdl:portType name="UserAPI">
+    <wsdl:operation name="createUsers">
+      <wsdl:input name="createUsers" message="tns:createUsers" />
+      <wsdl:output name="createUsersResponse" message="tns:createUsersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createUser">
+      <wsdl:input name="createUser" message="tns:createUser" />
+      <wsdl:output name="createUserResponse" message="tns:createUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateUser">
+      <wsdl:input name="updateUser" message="tns:updateUser" />
+      <wsdl:output name="updateUserResponse" message="tns:updateUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="search">
+      <wsdl:input name="search" message="tns:search" />
+      <wsdl:output name="searchResponse" message="tns:searchResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateUsers">
+      <wsdl:input name="updateUsers" message="tns:updateUsers" />
+      <wsdl:output name="updateUsersResponse" message="tns:updateUsersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllActive">
+      <wsdl:input name="getAllActive" message="tns:getAllActive" />
+      <wsdl:output name="getAllActiveResponse" message="tns:getAllActiveResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserAPIServiceSoapBinding" type="tns:UserAPI">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="createUsers">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="createUsers">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createUsersResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createUser">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="createUser">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createUserResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUser">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updateUser">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateUserResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="search">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="search">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="searchResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUsers">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updateUsers">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateUsersResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllActive">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAllActive">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllActiveResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserAPIService">
+    <wsdl:port name="UserAPIPort" binding="tns:UserAPIServiceSoapBinding">
+      <soap:address location="http://localhost:8080/cxf/UserAPI" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

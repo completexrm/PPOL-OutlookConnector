@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://api.calendar.cxrm.com/" name="TaskAPIService" targetNamespace="http://api.calendar.cxrm.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://api.calendar.cxrm.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="taskStatus">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:option">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="option">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseObj">
+            <xs:sequence>
+              <xs:element name="id" type="xs:int" />
+              <xs:element minOccurs="0" name="key" type="xs:string" />
+              <xs:element minOccurs="0" name="name" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseObj">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="errorMsg" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="taskPriority">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:option">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseCustomFieldData">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element name="cfDataId" type="xs:int" />
+              <xs:element name="cfDataNumValue" type="xs:double" />
+              <xs:element minOccurs="0" name="cfDataValue" type="xs:string" />
+              <xs:element minOccurs="0" name="fieldDefinition" type="xs:string" />
+              <xs:element name="fieldDefinitionId" type="xs:int" />
+              <xs:element name="ownerTableId" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="activeStatus" type="xs:string" />
+          <xs:element name="dbCreatedBy" type="xs:int" />
+          <xs:element minOccurs="0" name="dbCreationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dbLastUpdateDate" type="xs:dateTime" />
+          <xs:element name="dbLastUpdatedBy" type="xs:int" />
+          <xs:element minOccurs="0" name="errorMsg" type="xs:string" />
+          <xs:element name="olCreatedBy" type="xs:int" />
+          <xs:element minOccurs="0" name="olCreationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="olLastUpdateDate" type="xs:dateTime" />
+          <xs:element name="olLastUpdatedBy" type="xs:int" />
+          <xs:element name="xmlId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="taskRecurInfoStore">
+        <xs:sequence>
+          <xs:element name="daySetup" type="xs:int" />
+          <xs:element minOccurs="0" name="endDate" type="xs:string" />
+          <xs:element minOccurs="0" name="monthSetup" type="xs:string" />
+          <xs:element name="numTimes" type="xs:int" />
+          <xs:element minOccurs="0" name="recurType" type="xs:string" />
+          <xs:element minOccurs="0" name="startDate" type="xs:string" />
+          <xs:element minOccurs="0" name="weekSetup" type="xs:string" />
+          <xs:element minOccurs="0" name="yearSetup" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="task">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="closedFlag" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="customFields" nillable="true" type="tns:baseCustomFieldData" />
+              <xs:element minOccurs="0" name="dueDate" type="xs:string" />
+              <xs:element minOccurs="0" name="fcABC" type="xs:string" />
+              <xs:element minOccurs="0" name="fcDeleted" type="xs:string" />
+              <xs:element minOccurs="0" name="fcStatus" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="notes" nillable="true" type="tns:baseMessage" />
+              <xs:element name="ownerId" type="xs:int" />
+              <xs:element minOccurs="0" name="recurInfoStore" type="tns:taskRecurInfoStore" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="references" nillable="true" type="tns:calReference" />
+              <xs:element minOccurs="0" name="reminderDate" type="xs:string" />
+              <xs:element name="reminderHour" type="xs:int" />
+              <xs:element name="reminderMinute" type="xs:int" />
+              <xs:element minOccurs="0" name="taskCategory" type="xs:string" />
+              <xs:element minOccurs="0" name="taskDetail" type="xs:string" />
+              <xs:element minOccurs="0" name="taskHistory" type="xs:string" />
+              <xs:element name="taskId" type="xs:int" />
+              <xs:element minOccurs="0" name="taskName" type="xs:string" />
+              <xs:element name="taskNumber" type="xs:int" />
+              <xs:element minOccurs="0" name="taskPriority" type="xs:string" />
+              <xs:element minOccurs="0" name="taskPrivate" type="xs:string" />
+              <xs:element minOccurs="0" name="taskStatus" type="xs:string" />
+              <xs:element minOccurs="0" name="taskType" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseMessage">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="attachmentFileContent" type="xs:string" />
+              <xs:element minOccurs="0" name="attachmentFileName" type="xs:string" />
+              <xs:element name="msgId" type="xs:int" />
+              <xs:element minOccurs="0" name="msgTitle" type="xs:string" />
+              <xs:element minOccurs="0" name="msgTxt" type="xs:string" />
+              <xs:element name="parentId" type="xs:int" />
+              <xs:element name="threadId" type="xs:int" />
+              <xs:element minOccurs="0" name="writerName" type="xs:string" />
+              <xs:element name="writerUserId" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="calReference">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element name="entityId" type="xs:int" />
+              <xs:element minOccurs="0" name="entityName" type="xs:string" />
+              <xs:element minOccurs="0" name="entityType" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="taskList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="tns:task" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="taskPriorityList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="tns:taskPriority" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="taskStatusList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="tns:taskStatus" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="taskOptions">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseObj">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="taskPriorityList" type="tns:taskPriorityList" />
+              <xs:element minOccurs="0" name="taskStatusList" type="tns:taskStatusList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="taskStatusArray" final="#all">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="item" nillable="true" type="tns:taskStatus" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="taskPriorityArray" final="#all">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="item" nillable="true" type="tns:taskPriority" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="baseCustomFieldDataArray" final="#all">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="item" nillable="true" type="tns:baseCustomFieldData" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="taskArray" final="#all">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="item" nillable="true" type="tns:task" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="calReferenceArray" final="#all">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="item" nillable="true" type="tns:calReference" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="baseMessageArray" final="#all">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="item" nillable="true" type="tns:baseMessage" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getTasksByAssignedUser" type="tns:getTasksByAssignedUser" />
+      <xs:complexType name="getTasksByAssignedUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getTasksByAssignedUserResponse" type="tns:getTasksByAssignedUserResponse" />
+      <xs:complexType name="getTasksByAssignedUserResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:taskList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAllTasks" type="tns:getAllTasks" />
+      <xs:complexType name="getAllTasks">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAllTasksResponse" type="tns:getAllTasksResponse" />
+      <xs:complexType name="getAllTasksResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:taskList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAllTasksByDate" type="tns:getAllTasksByDate" />
+      <xs:complexType name="getAllTasksByDate">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAllTasksByDateResponse" type="tns:getAllTasksByDateResponse" />
+      <xs:complexType name="getAllTasksByDateResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:taskList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getTaskDetail" type="tns:getTaskDetail" />
+      <xs:complexType name="getTaskDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element name="arg1" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getTaskDetailResponse" type="tns:getTaskDetailResponse" />
+      <xs:complexType name="getTaskDetailResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:task" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="saveTaskRecord" type="tns:saveTaskRecord" />
+      <xs:complexType name="saveTaskRecord">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="tns:task" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="saveTaskRecordResponse" type="tns:saveTaskRecordResponse" />
+      <xs:complexType name="saveTaskRecordResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:task" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getOpenTasksByAssignedUser" type="tns:getOpenTasksByAssignedUser" />
+      <xs:complexType name="getOpenTasksByAssignedUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getOpenTasksByAssignedUserResponse" type="tns:getOpenTasksByAssignedUserResponse" />
+      <xs:complexType name="getOpenTasksByAssignedUserResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:taskList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAllOpenTasks" type="tns:getAllOpenTasks" />
+      <xs:complexType name="getAllOpenTasks">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAllOpenTasksResponse" type="tns:getAllOpenTasksResponse" />
+      <xs:complexType name="getAllOpenTasksResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:taskList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getTaskOptions" type="tns:getTaskOptions" />
+      <xs:complexType name="getTaskOptions">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getTaskOptionsResponse" type="tns:getTaskOptionsResponse" />
+      <xs:complexType name="getTaskOptionsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:taskOptions" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAllTasksSync" type="tns:getAllTasksSync" />
+      <xs:complexType name="getAllTasksSync">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAllTasksSyncResponse" type="tns:getAllTasksSyncResponse" />
+      <xs:complexType name="getAllTasksSyncResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:taskList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="transferEmailAsTask" type="tns:transferEmailAsTask" />
+      <xs:complexType name="transferEmailAsTask">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+          <xs:element minOccurs="0" name="arg3" type="tns:task" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="transferEmailAsTaskResponse" type="tns:transferEmailAsTaskResponse" />
+      <xs:complexType name="transferEmailAsTaskResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:task" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getTaskDetailResponse">
+    <wsdl:part name="parameters" element="tns:getTaskDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllOpenTasks">
+    <wsdl:part name="parameters" element="tns:getAllOpenTasks" />
+  </wsdl:message>
+  <wsdl:message name="getTasksByAssignedUserResponse">
+    <wsdl:part name="parameters" element="tns:getTasksByAssignedUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="transferEmailAsTaskResponse">
+    <wsdl:part name="parameters" element="tns:transferEmailAsTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllTasksResponse">
+    <wsdl:part name="parameters" element="tns:getAllTasksResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOpenTasksByAssignedUserResponse">
+    <wsdl:part name="parameters" element="tns:getOpenTasksByAssignedUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTaskDetail">
+    <wsdl:part name="parameters" element="tns:getTaskDetail" />
+  </wsdl:message>
+  <wsdl:message name="transferEmailAsTask">
+    <wsdl:part name="parameters" element="tns:transferEmailAsTask" />
+  </wsdl:message>
+  <wsdl:message name="getTaskOptionsResponse">
+    <wsdl:part name="parameters" element="tns:getTaskOptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllTasksByDate">
+    <wsdl:part name="parameters" element="tns:getAllTasksByDate" />
+  </wsdl:message>
+  <wsdl:message name="saveTaskRecordResponse">
+    <wsdl:part name="parameters" element="tns:saveTaskRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllTasks">
+    <wsdl:part name="parameters" element="tns:getAllTasks" />
+  </wsdl:message>
+  <wsdl:message name="getAllTasksByDateResponse">
+    <wsdl:part name="parameters" element="tns:getAllTasksByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTasksByAssignedUser">
+    <wsdl:part name="parameters" element="tns:getTasksByAssignedUser" />
+  </wsdl:message>
+  <wsdl:message name="getAllTasksSync">
+    <wsdl:part name="parameters" element="tns:getAllTasksSync" />
+  </wsdl:message>
+  <wsdl:message name="getAllTasksSyncResponse">
+    <wsdl:part name="parameters" element="tns:getAllTasksSyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="saveTaskRecord">
+    <wsdl:part name="parameters" element="tns:saveTaskRecord" />
+  </wsdl:message>
+  <wsdl:message name="getTaskOptions">
+    <wsdl:part name="parameters" element="tns:getTaskOptions" />
+  </wsdl:message>
+  <wsdl:message name="getAllOpenTasksResponse">
+    <wsdl:part name="parameters" element="tns:getAllOpenTasksResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOpenTasksByAssignedUser">
+    <wsdl:part name="parameters" element="tns:getOpenTasksByAssignedUser" />
+  </wsdl:message>
+  <wsdl:portType name="TaskAPI">
+    <wsdl:operation name="getTasksByAssignedUser">
+      <wsdl:input name="getTasksByAssignedUser" message="tns:getTasksByAssignedUser" />
+      <wsdl:output name="getTasksByAssignedUserResponse" message="tns:getTasksByAssignedUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllTasks">
+      <wsdl:input name="getAllTasks" message="tns:getAllTasks" />
+      <wsdl:output name="getAllTasksResponse" message="tns:getAllTasksResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllTasksByDate">
+      <wsdl:input name="getAllTasksByDate" message="tns:getAllTasksByDate" />
+      <wsdl:output name="getAllTasksByDateResponse" message="tns:getAllTasksByDateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTaskDetail">
+      <wsdl:input name="getTaskDetail" message="tns:getTaskDetail" />
+      <wsdl:output name="getTaskDetailResponse" message="tns:getTaskDetailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="saveTaskRecord">
+      <wsdl:input name="saveTaskRecord" message="tns:saveTaskRecord" />
+      <wsdl:output name="saveTaskRecordResponse" message="tns:saveTaskRecordResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getOpenTasksByAssignedUser">
+      <wsdl:input name="getOpenTasksByAssignedUser" message="tns:getOpenTasksByAssignedUser" />
+      <wsdl:output name="getOpenTasksByAssignedUserResponse" message="tns:getOpenTasksByAssignedUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllOpenTasks">
+      <wsdl:input name="getAllOpenTasks" message="tns:getAllOpenTasks" />
+      <wsdl:output name="getAllOpenTasksResponse" message="tns:getAllOpenTasksResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTaskOptions">
+      <wsdl:input name="getTaskOptions" message="tns:getTaskOptions" />
+      <wsdl:output name="getTaskOptionsResponse" message="tns:getTaskOptionsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllTasksSync">
+      <wsdl:input name="getAllTasksSync" message="tns:getAllTasksSync" />
+      <wsdl:output name="getAllTasksSyncResponse" message="tns:getAllTasksSyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="transferEmailAsTask">
+      <wsdl:input name="transferEmailAsTask" message="tns:transferEmailAsTask" />
+      <wsdl:output name="transferEmailAsTaskResponse" message="tns:transferEmailAsTaskResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TaskAPIServiceSoapBinding" type="tns:TaskAPI">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAllTasks">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAllTasks">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllTasksResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTasksByAssignedUser">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getTasksByAssignedUser">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTasksByAssignedUserResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTasksByDate">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAllTasksByDate">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllTasksByDateResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTaskDetail">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getTaskDetail">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTaskDetailResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveTaskRecord">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="saveTaskRecord">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="saveTaskRecordResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOpenTasksByAssignedUser">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getOpenTasksByAssignedUser">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getOpenTasksByAssignedUserResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllOpenTasks">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAllOpenTasks">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllOpenTasksResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTaskOptions">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getTaskOptions">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTaskOptionsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTasksSync">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAllTasksSync">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllTasksSyncResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transferEmailAsTask">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="transferEmailAsTask">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transferEmailAsTaskResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TaskAPIService">
+    <wsdl:port name="TaskAPIPort" binding="tns:TaskAPIServiceSoapBinding">
+      <soap:address location="http://localhost:8080/cxf/TaskAPI" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

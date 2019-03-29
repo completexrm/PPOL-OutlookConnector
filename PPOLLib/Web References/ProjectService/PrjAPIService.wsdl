@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://api.sales.cxrm.com/" xmlns:ns1="http://schemas.xmlsoap.org/wsdl/soap/http" name="PrjAPIService" targetNamespace="http://api.sales.cxrm.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://api.sales.cxrm.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="attachEmailAsNote" type="tns:attachEmailAsNote" />
+      <xs:element name="attachEmailAsNoteResponse" type="tns:attachEmailAsNoteResponse" />
+      <xs:element name="getAllProjects" type="tns:getAllProjects" />
+      <xs:element name="getAllProjectsResponse" type="tns:getAllProjectsResponse" />
+      <xs:element name="getTaskOptions" type="tns:getTaskOptions" />
+      <xs:element name="getTaskOptionsResponse" type="tns:getTaskOptionsResponse" />
+      <xs:element name="transferEmailAsTask" type="tns:transferEmailAsTask" />
+      <xs:element name="transferEmailAsTaskResponse" type="tns:transferEmailAsTaskResponse" />
+      <xs:complexType name="attachEmailAsNote">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+          <xs:element minOccurs="0" name="arg3" type="tns:project" />
+          <xs:element minOccurs="0" name="arg4" type="tns:message" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="project">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="description" type="xs:string" />
+              <xs:element name="forumId" type="xs:int" />
+              <xs:element name="projectId" type="xs:int" />
+              <xs:element minOccurs="0" name="projectName" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="activeStatus" type="xs:string" />
+          <xs:element name="dbCreatedBy" type="xs:int" />
+          <xs:element minOccurs="0" name="dbCreationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dbLastUpdateDate" type="xs:dateTime" />
+          <xs:element name="dbLastUpdatedBy" type="xs:int" />
+          <xs:element minOccurs="0" name="errorMsg" type="xs:string" />
+          <xs:element name="olCreatedBy" type="xs:int" />
+          <xs:element minOccurs="0" name="olCreationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="olLastUpdateDate" type="xs:dateTime" />
+          <xs:element name="olLastUpdatedBy" type="xs:int" />
+          <xs:element name="xmlId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="message">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="content" type="xs:string" />
+          <xs:element minOccurs="0" name="date" type="xs:string" />
+          <xs:element minOccurs="0" name="fromName" type="xs:string" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="subject" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="attachEmailAsNoteResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:project" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAllProjects">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAllProjectsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:projectList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="projectList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="tns:project" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getTaskOptions">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getTaskOptionsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:prjTaskOptions" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="prjTaskOptions">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseObj">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="prjTaskPriorityList" type="tns:prjTaskPriorityList" />
+              <xs:element minOccurs="0" name="prjTaskStatusList" type="tns:prjTaskStatusList" />
+              <xs:element minOccurs="0" name="prjTaskTypeList" type="tns:prjTaskTypeList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseObj">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="errorMsg" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="prjTaskPriorityList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="tns:prjTaskPriority" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="prjTaskPriority">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:option">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="option">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseObj">
+            <xs:sequence>
+              <xs:element name="id" type="xs:int" />
+              <xs:element minOccurs="0" name="key" type="xs:string" />
+              <xs:element minOccurs="0" name="name" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="prjTaskStatusList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="tns:prjTaskStatus" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="prjTaskStatus">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:option">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="prjTaskTypeList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="tns:prjTaskType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="prjTaskType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:option">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="transferEmailAsTask">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+          <xs:element minOccurs="0" name="arg3" type="tns:prjTask" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="prjTask">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseEntity">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="desc" type="xs:string" />
+              <xs:element minOccurs="0" name="endDate" type="xs:string" />
+              <xs:element name="id" type="xs:int" />
+              <xs:element name="ownerId" type="xs:int" />
+              <xs:element minOccurs="0" name="priority" type="xs:string" />
+              <xs:element minOccurs="0" name="project" type="tns:project" />
+              <xs:element minOccurs="0" name="startDate" type="xs:string" />
+              <xs:element minOccurs="0" name="status" type="xs:string" />
+              <xs:element minOccurs="0" name="taskName" type="xs:string" />
+              <xs:element minOccurs="0" name="type" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="transferEmailAsTaskResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:prjTask" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getTaskOptions">
+    <wsdl:part name="parameters" element="tns:getTaskOptions" />
+  </wsdl:message>
+  <wsdl:message name="getAllProjectsResponse">
+    <wsdl:part name="parameters" element="tns:getAllProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="attachEmailAsNote">
+    <wsdl:part name="parameters" element="tns:attachEmailAsNote" />
+  </wsdl:message>
+  <wsdl:message name="transferEmailAsTaskResponse">
+    <wsdl:part name="parameters" element="tns:transferEmailAsTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllProjects">
+    <wsdl:part name="parameters" element="tns:getAllProjects" />
+  </wsdl:message>
+  <wsdl:message name="transferEmailAsTask">
+    <wsdl:part name="parameters" element="tns:transferEmailAsTask" />
+  </wsdl:message>
+  <wsdl:message name="getTaskOptionsResponse">
+    <wsdl:part name="parameters" element="tns:getTaskOptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="attachEmailAsNoteResponse">
+    <wsdl:part name="parameters" element="tns:attachEmailAsNoteResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PrjAPI">
+    <wsdl:operation name="attachEmailAsNote">
+      <wsdl:input name="attachEmailAsNote" message="tns:attachEmailAsNote" />
+      <wsdl:output name="attachEmailAsNoteResponse" message="tns:attachEmailAsNoteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllProjects">
+      <wsdl:input name="getAllProjects" message="tns:getAllProjects" />
+      <wsdl:output name="getAllProjectsResponse" message="tns:getAllProjectsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTaskOptions">
+      <wsdl:input name="getTaskOptions" message="tns:getTaskOptions" />
+      <wsdl:output name="getTaskOptionsResponse" message="tns:getTaskOptionsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="transferEmailAsTask">
+      <wsdl:input name="transferEmailAsTask" message="tns:transferEmailAsTask" />
+      <wsdl:output name="transferEmailAsTaskResponse" message="tns:transferEmailAsTaskResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PrjAPIServiceSoapBinding" type="tns:PrjAPI">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="attachEmailAsNote">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="attachEmailAsNote">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="attachEmailAsNoteResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllProjects">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAllProjects">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllProjectsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTaskOptions">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getTaskOptions">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTaskOptionsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transferEmailAsTask">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="transferEmailAsTask">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transferEmailAsTaskResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PrjAPIService">
+    <wsdl:port name="PrjAPIPort" binding="tns:PrjAPIServiceSoapBinding">
+      <soap:address location="http://localhost:8080/cxf/PrjAPI" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://api.domains.cxrm.com/" xmlns:ns1="http://schemas.xmlsoap.org/wsdl/soap/http" name="DomainLocationAPIService" targetNamespace="http://api.domains.cxrm.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://api.domains.cxrm.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="add" type="tns:add" />
+      <xs:element name="addResponse" type="tns:addResponse" />
+      <xs:element name="lookupServerURL" type="tns:lookupServerURL" />
+      <xs:element name="lookupServerURLResponse" type="tns:lookupServerURLResponse" />
+      <xs:element name="remove" type="tns:remove" />
+      <xs:element name="removeResponse" type="tns:removeResponse" />
+      <xs:element name="update" type="tns:update" />
+      <xs:element name="updateResponse" type="tns:updateResponse" />
+      <xs:complexType name="remove">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="removeResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="add">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+          <xs:element minOccurs="0" name="arg3" type="xs:string" />
+          <xs:element name="arg4" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addResponse" />
+      <xs:complexType name="update">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+          <xs:element minOccurs="0" name="arg3" type="xs:string" />
+          <xs:element name="arg4" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="lookupServerURL">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+          <xs:element minOccurs="0" name="arg2" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="lookupServerURLResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="lookupServerURLResponse">
+    <wsdl:part name="parameters" element="tns:lookupServerURLResponse" />
+  </wsdl:message>
+  <wsdl:message name="lookupServerURL">
+    <wsdl:part name="parameters" element="tns:lookupServerURL" />
+  </wsdl:message>
+  <wsdl:message name="add">
+    <wsdl:part name="parameters" element="tns:add" />
+  </wsdl:message>
+  <wsdl:message name="removeResponse">
+    <wsdl:part name="parameters" element="tns:removeResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateResponse">
+    <wsdl:part name="parameters" element="tns:updateResponse" />
+  </wsdl:message>
+  <wsdl:message name="remove">
+    <wsdl:part name="parameters" element="tns:remove" />
+  </wsdl:message>
+  <wsdl:message name="addResponse">
+    <wsdl:part name="parameters" element="tns:addResponse" />
+  </wsdl:message>
+  <wsdl:message name="update">
+    <wsdl:part name="parameters" element="tns:update" />
+  </wsdl:message>
+  <wsdl:portType name="DomainLocationAPI">
+    <wsdl:operation name="remove">
+      <wsdl:input name="remove" message="tns:remove" />
+      <wsdl:output name="removeResponse" message="tns:removeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="add">
+      <wsdl:input name="add" message="tns:add" />
+      <wsdl:output name="addResponse" message="tns:addResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <wsdl:input name="update" message="tns:update" />
+      <wsdl:output name="updateResponse" message="tns:updateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="lookupServerURL">
+      <wsdl:input name="lookupServerURL" message="tns:lookupServerURL" />
+      <wsdl:output name="lookupServerURLResponse" message="tns:lookupServerURLResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DomainLocationAPIServiceSoapBinding" type="tns:DomainLocationAPI">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="remove">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="remove">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="removeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="add">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="add">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="update">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="lookupServerURL">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="lookupServerURL">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="lookupServerURLResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DomainLocationAPIService">
+    <wsdl:port name="DomainLocationAPIPort" binding="tns:DomainLocationAPIServiceSoapBinding">
+      <soap:address location="http://localhost:8080/cxf/DomainLocationAPI" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.archtelecom.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.archtelecom.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.archtelecom.com/">
+      <s:element name="vcLogin" type="s:string" />
+      <s:element name="vcPassword" type="s:string" />
+      <s:element name="iEnable" type="s:int" />
+      <s:element name="vcVendorID" type="s:string" />
+      <s:element name="vcVendorLogin" type="s:string" />
+      <s:element name="RegisterResult" type="s:boolean" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RegisterSoapIn">
+    <wsdl:part name="vcLogin" element="tns:vcLogin" />
+    <wsdl:part name="vcPassword" element="tns:vcPassword" />
+    <wsdl:part name="iEnable" element="tns:iEnable" />
+    <wsdl:part name="vcVendorID" element="tns:vcVendorID" />
+    <wsdl:part name="vcVendorLogin" element="tns:vcVendorLogin" />
+  </wsdl:message>
+  <wsdl:message name="RegisterSoapOut">
+    <wsdl:part name="RegisterResult" element="tns:RegisterResult" />
+  </wsdl:message>
+  <wsdl:message name="RegisterHttpGetIn">
+    <wsdl:part name="vcLogin" type="s:string" />
+    <wsdl:part name="vcPassword" type="s:string" />
+    <wsdl:part name="iEnable" type="s:string" />
+    <wsdl:part name="vcVendorID" type="s:string" />
+    <wsdl:part name="vcVendorLogin" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegisterHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="RegisterHttpPostIn">
+    <wsdl:part name="vcLogin" type="s:string" />
+    <wsdl:part name="vcPassword" type="s:string" />
+    <wsdl:part name="iEnable" type="s:string" />
+    <wsdl:part name="vcVendorID" type="s:string" />
+    <wsdl:part name="vcVendorLogin" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegisterHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="DataPushSoap">
+    <wsdl:operation name="Register">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registers an account for real-time Data Pushing</wsdl:documentation>
+      <wsdl:input message="tns:RegisterSoapIn" />
+      <wsdl:output message="tns:RegisterSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DataPushHttpGet">
+    <wsdl:operation name="Register">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registers an account for real-time Data Pushing</wsdl:documentation>
+      <wsdl:input message="tns:RegisterHttpGetIn" />
+      <wsdl:output message="tns:RegisterHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DataPushHttpPost">
+    <wsdl:operation name="Register">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registers an account for real-time Data Pushing</wsdl:documentation>
+      <wsdl:input message="tns:RegisterHttpPostIn" />
+      <wsdl:output message="tns:RegisterHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DataPushSoap" type="tns:DataPushSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="http://www.archtelecom.com/Register" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DataPushSoap12" type="tns:DataPushSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Register">
+      <soap12:operation soapAction="http://www.archtelecom.com/Register" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DataPushHttpGet" type="tns:DataPushHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Register">
+      <http:operation location="/Register" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DataPushHttpPost" type="tns:DataPushHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Register">
+      <http:operation location="/Register" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DataPush">
+    <wsdl:port name="DataPushSoap" binding="tns:DataPushSoap">
+      <soap:address location="http://www.archtelecom.com/DataPush/DataPush.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DataPushSoap12" binding="tns:DataPushSoap12">
+      <soap12:address location="http://www.archtelecom.com/DataPush/DataPush.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DataPushHttpGet" binding="tns:DataPushHttpGet">
+      <http:address location="http://www.archtelecom.com/DataPush/DataPush.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DataPushHttpPost" binding="tns:DataPushHttpPost">
+      <http:address location="http://www.archtelecom.com/DataPush/DataPush.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
