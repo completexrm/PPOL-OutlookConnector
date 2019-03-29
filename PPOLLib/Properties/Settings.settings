@@ -1,0 +1,54 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PPOL.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Account" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UserName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PPOLURL" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="AttachToPPOL_com_archtelecom_www_DataPush" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.archtelecom.com/DataPush/DataPush.asmx</Value>
+    </Setting>
+    <Setting Name="AttachToPPOL_WebReference_ArchTelecomAPIService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://216.130.241.141/cxf/ArchTelecomAPI</Value>
+    </Setting>
+    <Setting Name="AttachToPPOL_OppService_OppNoteAPIService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/cxf/OppNoteAPI</Value>
+    </Setting>
+    <Setting Name="AttachToPPOL_UserGroupService_UserGroupAPIService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/cxf/UserGroupAPI</Value>
+    </Setting>
+    <Setting Name="AttachToPPOL_ContactService_PsnAPIService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/cxf/PsnAPI</Value>
+    </Setting>
+    <Setting Name="AttachToPPOL_UserService_UserAPIService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/cxf/UserAPI</Value>
+    </Setting>
+    <Setting Name="PPOL_Outlook_Plugin_ProjectService_PrjAPIService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/cxf/PrjAPI</Value>
+    </Setting>
+    <Setting Name="PPOL_Outlook_Plugin_TaskService_TaskAPIService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/cxf/TaskAPI</Value>
+    </Setting>
+    <Setting Name="PPOL_Outlook_Plugin_AppointmentService_ApptAPIService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/cxf/ApptAPI</Value>
+    </Setting>
+    <Setting Name="PPOL_Outlook_Plugin_DomainService_DomainLocationAPIService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/cxf/DomainLocationAPI</Value>
+    </Setting>
+    <Setting Name="PPOL_Outlook_Plugin_MiscService_MiscAPIService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/cxf/MiscAPI</Value>
+    </Setting>
+    <Setting Name="PlanPlus_Online_Email_Connector_PPOLService_PsnNoteAPIService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/cxf/PsnNoteAPI</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
