@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <assemblyIdentity name="PPOL.Outlook, PublicKeyToken=fe7a234708e64b57" />
+  <loaderSettings generateLogFile="true" shadowCopyEnabled="false" privileges="user" configFileName="PPOL.Outlook.dll.config" />
+</configuration>

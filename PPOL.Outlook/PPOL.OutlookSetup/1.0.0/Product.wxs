@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+  <Product Id="745521a1-951f-4209-815a-92112c001bc7" Name="PlanPlus Online CRM Outlook Connector" Language="1033" Version="1.0.5" Manufacturer="PlanPlus Online CRM" UpgradeCode="745521a1-951f-4209-815a-92112c001bc8" Codepage="1252">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" Description="PlanPlus Online CRM Outlook Connector" Manufacturer="PlanPlus Online CRM" Languages="1033" SummaryCodepage="1252" InstallPrivileges="limited" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <Media Id="1" Cabinet="PPOL.Outlook.cab" EmbedCab="yes" />
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    <Feature Id="ProductFeature" Title="PlanPlus Online CRM Outlook Connector" Level="1" ConfigurableDirectory="INSTALLFOLDER">
+      <ComponentRef Id="INSTALLFOLDER" />
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+    <UIRef Id="WixUI_InstallDir" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+    <WixVariable Id="WixUILicenseRtf" Value="Resources\EULA PlanPlus Online REVISED 20150101.rtf" />
+    <WixVariable Id="WixUIBannerBmp" Value="Resources\WixUIBannerBmp.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="Resources\WixUIDialogBmp-a.bmp" />
+    <Binary Id="adxregistrator_exe" SourceFile="$(var.ADX_PATH)\Redistributables\adxregistrator.exe" />
+    <CustomAction Id="RegisterApp" BinaryKey="adxregistrator_exe" Execute="deferred" ExeCommand="/install=&quot;[INSTALLFOLDER]$(var.PPOL.Outlook.TargetFileName)&quot; /privileges=user /returnExitCode=false" Impersonate="yes" />
+    <CustomAction Id="RollbackApp" BinaryKey="adxregistrator_exe" Execute="rollback" ExeCommand="/uninstall=&quot;[INSTALLFOLDER]$(var.PPOL.Outlook.TargetFileName)&quot; /privileges=user" Impersonate="yes" Return="ignore" />
+    <CustomAction Id="UnregisterApp" BinaryKey="adxregistrator_exe" Execute="deferred" ExeCommand="/uninstall=&quot;[INSTALLFOLDER]$(var.PPOL.Outlook.TargetFileName)&quot; /privileges=user" Impersonate="yes" Return="ignore" />
+    <InstallExecuteSequence>
+      <Custom Action="RegisterApp" After="StartServices"><![CDATA[$ProductComponent>2]]></Custom>
+      <Custom Action="RollbackApp" After="RegisterApp"><![CDATA[$ProductComponent>2]]></Custom>
+      <Custom Action="UnregisterApp" After="MsiUnpublishAssemblies"><![CDATA[$ProductComponent=2]]></Custom>
+    </InstallExecuteSequence>
+    <!-- Properties for all current versions of the .NET Framework are available here: http://wix.sourceforge.net/manual-wix3/wixnetfxextension.htm -->
+    <PropertyRef Id="NETFRAMEWORK40CLIENT" />
+    <Condition Message="This application requires .NET Framework 4.0. Please install the .NET Framework then run this installer again."><![CDATA[Installed OR NETFRAMEWORK40CLIENT]]></Condition>
+  </Product>
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="LocalAppDataFolder">
+        <Directory Id="INSTALLFOLDER" Name="PlanPlus Online CRM Outlook Connector">
+          <Component Id="INSTALLFOLDER" Guid="c6831126-bade-4245-b40c-5a461c0475e8">
+            <RemoveFolder On="both" Id="INSTALLFOLDER" />
+            <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="PlanPlus Online CRM Outlook Connector" />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="ProductComponents">
+      <Component Id="ProductComponent" Guid="ee6b800f-7318-4310-9103-fa732e3ba7e1" DiskId="1" Directory="INSTALLFOLDER">
+        <RegistryKey Root="HKCU" Key="Software\[Manufacturer]\[ProductName]">
+          <RegistryValue Type="string" Name="Installed" Value="[INSTALLFOLDER]" KeyPath="yes" />
+        </RegistryKey>
+        <File Id="_$(var.PPOL.Outlook.TargetName)_dll" Name="$(var.PPOL.Outlook.TargetFileName)" Source="$(var.PPOL.Outlook.TargetPath)" />
+        <File Id="_adxloader_dll_manifest" Name="adxloader.dll.manifest" Source="$(var.PPOL.Outlook.ProjectDir)Loader\" />
+        <File Id="_adxloader_dll" Name="adxloader.dll" Source="$(var.PPOL.Outlook.ProjectDir)Loader\" />
+        <File Id="_adxloader64_dll" Name="adxloader64.dll" Source="$(var.PPOL.Outlook.ProjectDir)Loader\" />
+        <File Id="_AddinExpress_MSO_2005_dll" Name="AddinExpress.MSO.2005.dll" Source="C:\Program Files (x86)\Add-in Express\Add-in Express for .NET\Bin\" />
+        <File Id="_Microsoft_Office_Interop_Outlook_dll" Name="Microsoft.Office.Interop.Outlook.dll" Source="$(var.PPOL.Outlook.TargetDir)" />
+        <File Id="_PPOLLib_dll" Name="PPOLLib.dll" Source="$(var.PPOL.Outlook.TargetDir)" />
+        <File Id="_Microsoft_Vbe_Interop_dll" Name="Microsoft.Vbe.Interop.dll" Source="$(var.PPOL.Outlook.TargetDir)" />
+        <File Id="_Office_dll" Name="Office.dll" Source="$(var.PPOL.Outlook.TargetDir)" />
+        <!--<File Id="_PPOLLib_pdb" Name="PPOLLib.pdb" Source="$(var.PPOL.Outlook.TargetDir)" />-->
+        <File Id="_Ionic_Zip_Dll" Name="Ionic.Zip.dll" Source="$(var.PPOL.Outlook.TargetDir)" />
+        
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
