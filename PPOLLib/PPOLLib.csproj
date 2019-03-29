@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5E476D49-79C6-4BD9-ADE3-5FE3C94519BC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PPOL</RootNamespace>
+    <AssemblyName>PPOLLib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>test.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppointmentTransferForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppointmentTransferForm.Designer.cs">
+      <DependentUpon>AppointmentTransferForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClassFactory.cs" />
+    <Compile Include="ContactCreateFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContactCreateFrm.Designer.cs">
+      <DependentUpon>ContactCreateFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContactSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContactSearch.Designer.cs">
+      <DependentUpon>ContactSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmailAttachProcessor.cs" />
+    <Compile Include="FrmAddressList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddressList.Designer.cs">
+      <DependentUpon>FrmAddressList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAppointment.Designer.cs">
+      <DependentUpon>FrmAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHelp.Designer.cs">
+      <DependentUpon>FrmHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOppTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOppTransfer.Designer.cs">
+      <DependentUpon>FrmOppTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MailObjects\IContactItem.cs" />
+    <Compile Include="MailObjects\IMailItem.cs" />
+    <Compile Include="MailObjects\IOutlookApplication.cs" />
+    <Compile Include="OpportunitySearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpportunitySearch.Designer.cs">
+      <DependentUpon>OpportunitySearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OppTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OppTransfer.Designer.cs">
+      <DependentUpon>OppTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrgCreateFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrgCreateFrm.Designer.cs">
+      <DependentUpon>OrgCreateFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PPOLSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PPOLSetting.Designer.cs">
+      <DependentUpon>PPOLSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectSearch.Designer.cs">
+      <DependentUpon>ProjectSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectTaskTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectTaskTransfer.Designer.cs">
+      <DependentUpon>ProjectTaskTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs" />
+    <Compile Include="Properties\Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DomainService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PPOLService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ServicesUtil.cs" />
+    <Compile Include="TaskTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskTransfer.Designer.cs">
+      <DependentUpon>TaskTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlSettings.Designer.cs">
+      <DependentUpon>UserControlSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\AppointmentService\Reference.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Web References\com.archtelecom.www\Reference.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Web References\ContactService\Reference.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Web References\DomainService\Reference.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Web References\MiscService\Reference.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Web References\OppService\Reference.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Web References\PPOLService\PsnNoteAPIService.cs" />
+    <Compile Include="Web References\PPOLService\Reference.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Web References\ProjectService\Reference.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Web References\TaskService\Reference.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Web References\UserGroupService\Reference.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Web References\UserService\Reference.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Web References\WebReference\Reference.cs">
+      <SubType>code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DomainService\DomainLocationAPIService.wsdl" />
+    <None Include="Service References\PPOLService\PPOL.PPOLService.ppolContact.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PPOLService\PsnNoteAPIService.wsdl" />
+    <None Include="test.snk" />
+    <None Include="Web References\AppointmentService\appointment.datasource" />
+    <None Include="Web References\AppointmentService\appointmentList.datasource" />
+    <None Include="Web References\AppointmentService\ApptAPIService.wsdl" />
+    <None Include="Web References\AppointmentService\apptOptions.datasource" />
+    <None Include="Web References\AppointmentService\apptRecurVariance.datasource" />
+    <None Include="Web References\AppointmentService\Reference.map" />
+    <None Include="Web References\com.archtelecom.www\DataPush.wsdl" />
+    <None Include="Web References\com.archtelecom.www\Reference.map" />
+    <None Include="Web References\ContactService\contact.datasource" />
+    <None Include="Web References\ContactService\contactList.datasource" />
+    <None Include="Web References\ContactService\mktAudlistEO.datasource" />
+    <None Include="Web References\ContactService\organizationList.datasource" />
+    <None Include="Web References\ContactService\ppolContact.datasource" />
+    <None Include="Web References\ContactService\PsnAPIService.wsdl" />
+    <None Include="Web References\ContactService\Reference.map" />
+    <None Include="Web References\DomainService\DomainLocationAPIService.wsdl" />
+    <None Include="Web References\DomainService\Reference.map" />
+    <None Include="Web References\MiscService\contact.datasource" />
+    <None Include="Web References\MiscService\contactOptions.datasource" />
+    <None Include="Web References\MiscService\customerOptions.datasource" />
+    <None Include="Web References\MiscService\MiscAPIService.wsdl" />
+    <None Include="Web References\MiscService\organization.datasource" />
+    <None Include="Web References\MiscService\Reference.map" />
+    <None Include="Web References\OppService\OppNoteAPIService.wsdl" />
+    <None Include="Web References\OppService\opportunityList.datasource" />
+    <None Include="Web References\OppService\Reference.map" />
+    <None Include="Web References\PPOLService\ppolContact.datasource" />
+    <None Include="Web References\PPOLService\PsnNoteAPIService.wsdl" />
+    <None Include="Web References\PPOLService\Reference.map" />
+    <None Include="Web References\ProjectService\PrjAPIService.wsdl" />
+    <None Include="Web References\ProjectService\prjTask.datasource" />
+    <None Include="Web References\ProjectService\prjTaskOptions.datasource" />
+    <None Include="Web References\ProjectService\project.datasource" />
+    <None Include="Web References\ProjectService\projectList.datasource" />
+    <None Include="Web References\ProjectService\Reference.map" />
+    <None Include="Web References\TaskService\Reference.map" />
+    <None Include="Web References\TaskService\task.datasource" />
+    <None Include="Web References\TaskService\TaskAPIService.wsdl" />
+    <None Include="Web References\TaskService\taskList.datasource" />
+    <None Include="Web References\TaskService\taskOptions.datasource" />
+    <None Include="Web References\UserGroupService\fwkUserEO.datasource" />
+    <None Include="Web References\UserGroupService\ppolGroup.datasource" />
+    <None Include="Web References\UserGroupService\ppolUser.datasource" />
+    <None Include="Web References\UserGroupService\ppolUserGroup.datasource" />
+    <None Include="Web References\UserGroupService\Reference.map" />
+    <None Include="Web References\UserGroupService\UserGroupAPIService.wsdl" />
+    <None Include="Web References\UserService\fwkUserEO.datasource" />
+    <None Include="Web References\UserService\ppolAuthentication.datasource" />
+    <None Include="Web References\UserService\ppolUser.datasource" />
+    <None Include="Web References\UserService\Reference.map" />
+    <None Include="Web References\UserService\UserAPIService.wsdl" />
+    <None Include="Web References\WebReference\ArchTelecomAPIService.wsdl" />
+    <None Include="Web References\WebReference\Reference.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AppointmentTransferForm.resx">
+      <DependentUpon>AppointmentTransferForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContactCreateFrm.resx">
+      <DependentUpon>ContactCreateFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContactSearch.resx">
+      <DependentUpon>ContactSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddressList.resx">
+      <DependentUpon>FrmAddressList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAppointment.resx">
+      <DependentUpon>FrmAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHelp.resx">
+      <DependentUpon>FrmHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOppTransfer.resx">
+      <DependentUpon>FrmOppTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpportunitySearch.resx">
+      <DependentUpon>OpportunitySearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OppTransfer.resx">
+      <DependentUpon>OppTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrgCreateFrm.resx">
+      <DependentUpon>OrgCreateFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PPOLSetting.resx">
+      <DependentUpon>PPOLSetting.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectSearch.resx">
+      <DependentUpon>ProjectSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectTaskTransfer.resx">
+      <DependentUpon>ProjectTaskTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx" />
+    <EmbeddedResource Include="TaskTransfer.resx">
+      <DependentUpon>TaskTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlSettings.resx">
+      <DependentUpon>UserControlSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\DomainService\" />
+    <WCFMetadataStorage Include="Service References\PPOLService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PPOLService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PPOLService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PPOLService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DomainService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DomainService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DomainService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
